@@ -1,3 +1,8 @@
+// Load environment variables from .env file in development
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
 const express = require("express");
 const cors = require("cors");
 const fs = require("fs").promises;
@@ -9,10 +14,19 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const DATA_FILE = path.join(__dirname, "todos.json");
 const USERS_FILE = path.join(__dirname, "users.json");
-const JWT_SECRET = "todo-app-secret-key"; // In production, use environment variable!
+const JWT_SECRET = process.env.JWT_SECRET || "todo-app-secret-key";
+
+// CORS configuration
+const corsOptions = {
+  origin:
+    process.env.NODE_ENV === "production"
+      ? process.env.ALLOWED_ORIGINS || "*" // Restrictive in production if ALLOWED_ORIGINS provided
+      : "http://localhost:*", // Permissive in development
+  optionsSuccessStatus: 200,
+};
 
 // Middleware
-app.use(cors()); // Allow requests from our frontend
+app.use(cors(corsOptions)); // Apply configured CORS
 app.use(express.json()); // Parse JSON request bodies
 app.use(express.static(path.join(__dirname))); // Serve static files from root
 

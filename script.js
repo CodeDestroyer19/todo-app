@@ -1,8 +1,20 @@
 // Frontend JavaScript for ToDo App
 
 document.addEventListener("DOMContentLoaded", () => {
-  const apiBaseUrl = "http://localhost:3000"; // Base URL for API
+  // Dynamically determine API base URL:
+  // In production, API and frontend are served from same origin
+  // In development, use localhost:3000
+  const isProduction =
+    window.location.hostname !== "localhost" &&
+    window.location.hostname !== "127.0.0.1";
+
+  const apiBaseUrl = isProduction ? "" : "http://localhost:3000";
   const apiUrl = `${apiBaseUrl}/todos`; // Our todo endpoints
+
+  console.log(
+    `App running in ${isProduction ? "production" : "development"} mode.`
+  );
+  console.log(`Using API base URL: ${apiBaseUrl || "same origin"}`);
 
   // Auth elements
   const authContainer = document.getElementById("auth-container");
