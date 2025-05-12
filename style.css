@@ -1,0 +1,247 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  background-color: #f9f9f9; /* Light gray background, common in iOS */
+  color: #333;
+}
+
+.app-container {
+  max-width: 500px;
+  margin: 30px auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+header {
+  background-color: #f8f8f8;
+  padding: 15px 20px;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #007aff;
+  margin: 0; /* Reset margin for better alignment */
+}
+
+main {
+  padding: 20px;
+}
+
+.input-container {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+#todo-input {
+  flex-grow: 1;
+  padding: 10px 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+#todo-input:focus {
+  outline: none;
+  border-color: #007aff;
+  box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.2);
+}
+
+#add-button {
+  background-color: #007aff;
+  color: white;
+  border: none;
+  padding: 0 15px;
+  font-size: 24px;
+  font-weight: 300;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#add-button:hover {
+  background-color: #0056b3;
+}
+
+#todo-list {
+  list-style: none;
+}
+
+/* Placeholder for list item styles */
+#todo-list li {
+  padding: 12px 0;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+}
+
+#todo-list li:last-child {
+  border-bottom: none;
+}
+
+/* Styling for inline editing */
+.edit-input {
+  font-size: 16px; /* Match list item font size */
+  padding: 0; /* Remove default padding */
+  border: none; /* Remove border */
+  flex-grow: 1; /* Take up available space like the span */
+  margin-left: 5px; /* Align roughly with text span */
+  margin-right: 5px;
+  outline: none; /* Remove focus outline */
+  font-family: inherit; /* Use the same font */
+}
+
+/* Controls container styling */
+.controls {
+  padding-top: 15px;
+  margin-top: 15px;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between; /* Space out filters and clear button */
+  align-items: center;
+}
+
+.filters button {
+  margin: 0 5px;
+  padding: 5px 10px;
+  border: 1px solid transparent; /* Base border */
+  background: none;
+  color: #007aff;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.filters button:hover {
+  background-color: #f0f0f0;
+}
+
+.filters button.active {
+  border-color: #007aff;
+  font-weight: 600;
+}
+
+.control-button {
+  background-color: #f0f0f0;
+  border: 1px solid #dcdcdc;
+  color: #007aff; /* iOS blue text */
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.control-button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Authentication Styles */
+.hidden {
+  display: none;
+}
+
+.auth-toggle {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.auth-toggle-btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #777;
+}
+
+.auth-toggle-btn.active {
+  color: #007aff;
+  font-weight: 600;
+  border-bottom: 2px solid #007aff;
+}
+
+.auth-form {
+  padding: 10px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #555;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.auth-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007aff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 10px;
+}
+
+.auth-button:hover {
+  background-color: #0056b3;
+}
+
+.error-message {
+  color: #ff3b30; /* iOS red */
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+/* User info styles */
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+#username-display {
+  margin-right: 10px;
+  font-weight: 600;
+}
+
+#logout-button {
+  border: none;
+  background-color: transparent;
+  color: #ff3b30; /* iOS red */
+  cursor: pointer;
+  font-size: 14px;
+  padding: 5px 10px;
+}
